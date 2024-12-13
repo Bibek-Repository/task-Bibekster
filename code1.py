@@ -5,6 +5,7 @@ from tkinter import ttk
 from tkinter import Tk
 from database import initialize_database, insert_data, fetch_all_data
 from tkinter.ttk import Treeview
+import webbrowser
 
 # Create the main application window
 root = Tk()
@@ -20,6 +21,9 @@ tree.heading("Phone", text="Phone")
 tree.heading("Email", text="Email")
 tree.heading("Password", text="Password")
 tree.pack()
+
+def open_webpage():
+    webbrowser.open("index.html")
 
 def submit_form():
     # Use the globally defined Entry widgets to get user input
@@ -98,5 +102,10 @@ display_button.pack(pady=(10, 0))
 # Initialize the database (called once)
 initialize_database()
 
+# Create a button to redirect to a web page
+web_button = tk.Button(root, text="Go to Website", command=open_webpage)
+web_button.pack(pady=(10, 0))
+
 # Run the application
 root.mainloop()
+
