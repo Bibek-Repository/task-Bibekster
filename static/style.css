@@ -74,7 +74,7 @@ footer {
 }
 
 /* align the form inputs */
-#userlogin form {
+#user form {
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
@@ -114,3 +114,8 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+
+#usersignup {
+    display: none;
+  }
+  

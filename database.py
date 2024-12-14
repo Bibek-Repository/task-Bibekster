@@ -1,4 +1,5 @@
 import sqlite3
+from flask import Flask, render_template, request
 
 # Function to connect to the database and create the table
 def initialize_database():
@@ -11,6 +12,11 @@ def initialize_database():
             address TEXT NOT NULL,
             phone TEXT NOT NULL,
             email TEXT NOT NULL,
+            password TEXT NOT NULL
+        )
+                   CREATE TABLE IF NOT EXISTS user (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT NOT NULL,
             password TEXT NOT NULL
         )
     ''')
@@ -27,6 +33,9 @@ def insert_data(name, address, phone, email, password):
     ''', (name, address, phone, email, password))
     conn.commit()
     conn.close()
+
+# Create the users table (if it doesn't already exist)
+
 
 def fetch_all_data():
     conn = sqlite3.connect("form_data.db")
