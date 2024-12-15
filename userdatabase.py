@@ -26,4 +26,16 @@ def get_all_users():
         cursor = conn.cursor()
         cursor.execute('SELECT * FROM users')
         return cursor.fetchall()
+    
+def check_user_in_database(username, password):
+    # Check if a user exists in the database
+    conn = sqlite3.connect('users.db')
+    cursor = conn.cursor()
+
+    query = 'SELECT * FROM users WHERE username = ? AND password = ?'
+    cursor.execute(query, (username, password))
+    result = cursor.fetchone()  # Fetch a single matching row (if any)
+    conn.close()
+
+    return result is not None  # Returns True if a match is found, False otherwise
         
